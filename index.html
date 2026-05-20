@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SBC Gateway — Enterprise Call Center Optimization Platform</title>
+<meta name="description" content="Optimalkan call center Anda dengan SBC Gateway. Call Progress Detection, Multi-Gateway Failover, WhatsApp SIP Calling, dan real-time monitoring dalam satu platform.">
+<meta name="keywords" content="SBC Gateway, SIP, Call Center, VoIP, Call Progress Detection, WhatsApp Business, Telecom">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="#" class="nav-logo">
+      <div class="logo-icon">S</div>
+      <span>SBC<span style="color:var(--primary)">Gateway</span></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#cpd-flow">CPD Flow</a>
+      <a href="#architecture">How It Works</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#analytics">Analytics</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact" class="nav-cta">Request Demo</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="pulse"></span> Enterprise-Grade SBC Platform</div>
+      <h1>Optimalkan Call Center Anda dengan <span>SBC Gateway</span></h1>
+      <p class="hero-desc">Platform Session Border Controller lengkap dengan Call Progress Detection berbasis AI, Multi-Gateway Failover, WhatsApp SIP Integration, dan real-time analytics — semua dalam satu dashboard.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-hero primary">🚀 Request Demo Gratis</a>
+        <a href="#features" class="btn-hero outline">Lihat Fitur →</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="num">99.9%</div><div class="label">Uptime SLA</div></div>
+        <div class="hero-stat"><div class="num">500K+</div><div class="label">Calls / Day</div></div>
+        <div class="hero-stat"><div class="num">&lt;3s</div><div class="label">PDD Average</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="img/dashboard-hero.png" alt="SBC Gateway Dashboard" width="600" height="600" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FEATURES ═══════════ -->
+<section id="features">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">⚡ Core Features</div>
+      <h2 class="section-title">Fitur Unggulan SBC Gateway</h2>
+      <p class="section-desc">Platform komunikasi terintegrasi yang dirancang untuk efisiensi maksimal dan manajemen lalu lintas VoIP kelas enterprise.</p>
+    </div>
+    <div class="features-grid">
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon blue">🎯</div>
+        <h3>Call Progress Detection (CPD)</h3>
+        <p>Analisis media stream cerdas menggunakan ASR Engine untuk mendeteksi suara operator atau voicemail secara real-time. Sistem otomatis memutus panggilan tak produktif sebelum terhubung ke agen.</p>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon green">📞</div>
+        <h3>WhatsApp SIP Calling</h3>
+        <p>Integrasi seamless dua arah (inbound &amp; outbound) antara VoIP PBX/autodialer Anda dengan WhatsApp Business API, membuka kanal komunikasi digital yang lebih luas dan efisien.</p>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon purple">📊</div>
+        <h3>SIP Flow Analysis (TLS/UDP)</h3>
+        <p>Pelacakan dan visualisasi diagram alir paket (SIP ladder flow) serta fitur unduh file PCAP langsung dari antarmuka web, memudahkan tim NOC melakukan troubleshooting secara instan.</p>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon amber">🎵</div>
+        <h3>Early Tone Classification</h3>
+        <p>Klasifikasi dini tipe audio sebelum panggilan terjawab (tone_announcement, announcement_only, tone_only, silence) untuk pemutusan rute panggilan tidak aktif secara akurat.</p>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon pink">🎛️</div>
+        <h3>UI-Based Central Management</h3>
+        <p>Konfigurasi parameter routing, threshold deteksi, whitelist, firewall, hingga modul analitik 100% berbasis UI dashboard. Tidak memerlukan keahlian CLI atau modifikasi file server manual.</p>
+      </div>
+
+      <div class="feature-card fade-up">
+        <div class="feature-icon cyan">🛡️</div>
+        <h3>Failover &amp; Traffic Guard</h3>
+        <p>Proteksi failover multi-gateway otomatis yang dikombinasikan dengan pembatas laju panggilan (CPS &amp; CCR limiting) untuk melindungi infrastruktur dari beban berlebih.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CPD FLOW & BENEFITS ═══════════ -->
+<section id="cpd-flow" class="arch-section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="arch-layout">
+      <div>
+        <div class="section-badge">👂 Smart Early Media Detection</div>
+        <h2 class="section-title">Bagaimana CPD Menghemat Biaya &amp; Waktu Anda?</h2>
+        <p class="section-desc">Call Progress Detection (CPD) bertindak bagaikan memiliki "telinga manusia" cerdas pada sistem panggilan otomatis Anda.</p>
+        <div class="arch-points">
+          <div class="arch-point">
+            <div class="icon">✓</div>
+            <div>
+              <h4>Deteksi Suara Instan Layaknya Manusia</h4>
+              <p>CPD menganalisis aliran early audio dan langsung mendeteksi notifikasi suara operator ("Nomor tidak aktif", "Kotak suara penuh") menggunakan ASR Engine. Panggilan langsung diputus (ORIGINATOR_CANCEL) layaknya manusia yang langsung menutup telepon, menghemat waktu tunggu agen.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">✓</div>
+            <div>
+              <h4>Hemat Biaya Panggilan &amp; Pulsa</h4>
+              <p>Mencegah biaya percakapan voicemail karena panggilan ke nomor tidak aktif atau dialihkan ke kotak suara langsung diputus sebelum voicemail berbayar terhubung.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">✓</div>
+            <div>
+              <h4>Efisiensi Bandwidth &amp; Port Trunk</h4>
+              <p>Bandwidth dan port trunk dibebaskan secara instan begitu notifikasi suara terdeteksi, mencegah pemborosan resource network pada audio warning yang tidak produktif.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">✓</div>
+            <div>
+              <h4>Kapasitas Dialer Meningkat Tajam</h4>
+              <p>Karena port trunk cepat dibebaskan dari panggilan tidak produktif, autodialer Anda dapat memproses dan mendial database nomor dengan volume yang jauh lebih besar dalam waktu yang sama.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">✓</div>
+            <div>
+              <h4>Integrasi Mudah: 100% Berbasis UI</h4>
+              <p>Seluruh proses setup CPD, mapping Early Tone, threshold, dan failover dikonfigurasi secara visual melalui UI dashboard. Tidak perlu CLI atau konfigurasi manual di console server.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-image fade-up">
+        <img src="img/cpd-flow-diagram.png" alt="SBC Gateway CPD Flow Diagram" width="600" height="600" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ARCHITECTURE ═══════════ -->
+<section id="architecture">
+  <div class="container">
+    <div class="arch-layout">
+      <div class="arch-image fade-up">
+        <img src="img/architecture-diagram.png" alt="SBC Gateway Architecture" width="600" height="600" loading="lazy">
+      </div>
+      <div>
+        <div class="section-badge">🏗️ Architecture</div>
+        <h2 class="section-title">Bagaimana SBC Gateway Bekerja</h2>
+        <p class="section-desc">Arsitektur containerized dengan Docker host networking untuk performa maksimal tanpa overhead NAT.</p>
+        <div class="arch-points">
+          <div class="arch-point">
+            <div class="icon">1</div>
+            <div><h4>Panggilan Masuk via SIP/WebRTC</h4><p>Call center PBX atau SIP phone mengirim panggilan ke SBC Gateway melalui SIP trunk atau WebRTC.</p></div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">2</div>
+            <div><h4>Intelligent Routing &amp; CPD</h4><p>SBC menganalisis prefix, menerapkan CPS/CCR limit, memilih gateway optimal, dan mengaktifkan Call Progress Detection secara otomatis.</p></div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">3</div>
+            <div><h4>Multi-Gateway Bridge</h4><p>Panggilan di-bridge ke telco carrier dengan failover otomatis. Jika gateway pertama gagal, langsung pindah ke gateway berikutnya.</p></div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">4</div>
+            <div><h4>CDR &amp; Analytics</h4><p>Setiap panggilan dicatat ke TimescaleDB dengan 40+ field data termasuk RTP quality, keyword detection, dan early audio classification.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ BENEFITS ═══════════ -->
+<section id="benefits">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">📈 Impact</div>
+      <h2 class="section-title">Hasil Nyata untuk Bisnis Anda</h2>
+      <p class="section-desc">Tingkatkan efisiensi operasional call center dengan metrik terukur.</p>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-up">
+        <div class="benefit-num">94%</div>
+        <h4>ASR (Answer Seizure Ratio)</h4>
+        <p>Rasio keberhasilan panggilan yang lebih tinggi dengan routing cerdas</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-num">40%</div>
+        <h4>Pengurangan Voicemail</h4>
+        <p>CPD mendeteksi dan memutus panggilan ke mesin penjawab secara otomatis</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-num">0%</div>
+        <h4>Downtime Routing</h4>
+        <p>Multi-gateway failover memastikan panggilan selalu terkirim</p>
+      </div>
+      <div class="benefit-card fade-up">
+        <div class="benefit-num">1s</div>
+        <h4>Real-time Analytics</h4>
+        <p>Data call statistics diperbarui setiap detik via WebSocket</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SHOWCASE / DASHBOARD PREVIEWS ═══════════ -->
+<section id="analytics" class="showcase-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">💻 Interactive Showcase</div>
+      <h2 class="section-title">Eksplorasi Dashboard SBC-UI</h2>
+      <p class="section-desc">Pantau, analisis, dan amankan infrastruktur VoIP Anda secara real-time dari satu antarmuka dashboard terpadu.</p>
+    </div>
+
+    <!-- Tab Buttons -->
+    <div class="showcase-tabs">
+      <button class="showcase-tab active" onclick="switchTab('tab-monitoring')">📺 Live Monitoring</button>
+      <button class="showcase-tab" onclick="switchTab('tab-analytics')">📊 Analytics &amp; CDR</button>
+      <button class="showcase-tab" onclick="switchTab('tab-waba')">💬 WhatsApp &amp; Billing</button>
+      <button class="showcase-tab" onclick="switchTab('tab-security')">🛡️ Access Control &amp; Security</button>
+    </div>
+
+    <!-- Tab Panels -->
+    <div class="showcase-panels">
+
+      <!-- Panel 1: Monitoring -->
+      <div id="tab-monitoring" class="showcase-panel active">
+        <div class="showcase-image">
+          <img src="img/live-monitoring.png" alt="Live Monitoring & Gateway Status" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>Live Channels, Gateway Status &amp; Server Load</h3>
+          <p>Pantau kesehatan infrastruktur telekomunikasi secara langsung dari satu panel terpadu.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>LiveChannelView: Monitoring active call channel real-time via WebSocket.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>GatewayStatusView: Pantau RTT/latensi dan status online gateway carrier telco.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>ServerLoadView: Monitoring kapasitas CPU, memori, SSD, dan container health.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Analytics -->
+      <div id="tab-analytics" class="showcase-panel">
+        <div class="showcase-image">
+          <img src="img/analytics-cdr.png" alt="SIP Response Analytics & CDR Logs" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>SIP Response Analytics, Traffic &amp; CDR Logs</h3>
+          <p>Dapatkan insight performa dan diagnosa kegagalan panggilan dengan visualisasi charts interaktif.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>SipResponseAnalyticsView: Breakdown kode respon SIP (200 OK, 486 Busy, dsb) per jam.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>TrafficOverviewView &amp; CallStatsView: Stacked area charts total volume panggilan masuk &amp; keluar.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>CdrView: Pencarian log CDR dengan detail SIP flow ladder, ASR%, ACD, PDD, dan early audio classification.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: WABA & Billing -->
+      <div id="tab-waba" class="showcase-panel">
+        <div class="showcase-image">
+          <img src="img/waba-routing.png" alt="WhatsApp Business & Billing View" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>WhatsApp SIP Calling, Dynamic CallerID &amp; Billing</h3>
+          <p>Kelola kanal panggilan alternatif WhatsApp Business API, aturan CallerID block, serta reporting biaya panggilan.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>WabaView: Setup interkoneksi WhatsApp Business API trunk ke SIP server.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Dynamic CallerID: Kelola CallerID blocks (Sequence, Random, Static) via UI.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>BillingView: Ekspor laporan konsumsi menit dan biaya panggilan ke CSV, Excel, PDF.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 4: Security -->
+      <div id="tab-security" class="showcase-panel">
+        <div class="showcase-image">
+          <img src="img/acl-security.png" alt="Access Control List & Security View" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>SIP Security &amp; Access Control List (ACL)</h3>
+          <p>Lindungi gateway dari ancaman spoofing, brute force, flooding, dan unauthorized access.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>AclView: Tambah &amp; hapus rules IP whitelist/blacklist sip profile secara dinamis.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Rate Limiting: Pengaturan batas Call Per Second (CPS) &amp; Concurrent Call Rate (CCR) per IP.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>SIP Firewall Rules: Deteksi dan blokir malformed SIP packets, anti-flooding, dan drop invalid User-Agents.</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PRICING ═══════════ -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-badge">💎 Plans</div>
+      <h2 class="section-title">Pilih Paket yang Sesuai</h2>
+      <p class="section-desc">Mulai dari trial gratis hingga enterprise. Semua termasuk dukungan teknis penuh.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">Starter</div>
+        <div class="pricing-price">Free <small>/ 14 hari</small></div>
+        <div class="pricing-desc">Cocok untuk evaluasi dan testing awal</div>
+        <ul class="pricing-features">
+          <li>Hingga 10 concurrent calls</li>
+          <li>Single gateway routing</li>
+          <li>Basic CDR &amp; analytics</li>
+          <li>Call Progress Detection</li>
+          <li>Email support</li>
+        </ul>
+        <a href="#contact" class="pricing-btn outline">Mulai Trial</a>
+      </div>
+      <div class="pricing-card featured fade-up">
+        <div class="pricing-name">Professional</div>
+        <div class="pricing-price">Custom <small>/ bulan</small></div>
+        <div class="pricing-desc">Untuk call center dengan volume sedang-tinggi</div>
+        <ul class="pricing-features">
+          <li>Hingga 100 concurrent calls</li>
+          <li>Multi-gateway failover</li>
+          <li>Full analytics suite</li>
+          <li>CPD + Dynamic CallerID</li>
+          <li>WhatsApp SIP integration</li>
+          <li>Priority support 8×5</li>
+        </ul>
+        <a href="#contact" class="pricing-btn primary">Request Penawaran</a>
+      </div>
+      <div class="pricing-card fade-up">
+        <div class="pricing-name">Enterprise</div>
+        <div class="pricing-price">Custom <small>/ bulan</small></div>
+        <div class="pricing-desc">Unlimited scale dengan dedicated support</div>
+        <ul class="pricing-features">
+          <li>Unlimited concurrent calls</li>
+          <li>Multi-node deployment</li>
+          <li>Custom integration &amp; API</li>
+          <li>On-premise installation</li>
+          <li>SLA 99.9% uptime</li>
+          <li>Dedicated engineer 24×7</li>
+        </ul>
+        <a href="#contact" class="pricing-btn outline">Hubungi Kami</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div>
+        <div class="section-badge">📬 Get in Touch</div>
+        <h2 class="section-title">Siap Mengoptimalkan Call Center Anda?</h2>
+        <p class="section-desc">Hubungi tim kami untuk demo gratis dan konsultasi kebutuhan Anda.</p>
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="icon">📧</div>
+            <div class="info"><h4>Email</h4><p>masteringvoip@gmail.com</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">💬</div>
+            <div class="info"><h4>WhatsApp</h4><p>+6281287264002</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">📞</div>
+            <div class="info"><h4>Telepon</h4><p>+6281287264002</p></div>
+          </div>
+          <div class="contact-item">
+            <div class="icon">🌐</div>
+            <div class="info"><h4>Website</h4><p>sipses.com</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nama Lengkap</label>
+              <input type="text" id="name" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="company">Perusahaan</label>
+              <input type="text" id="company" placeholder="PT Contoh">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="john@company.com" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">No. Telepon</label>
+              <input type="tel" id="phone" placeholder="+62 812-xxx-xxx">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="interest">Tertarik Dengan</label>
+            <select id="interest">
+              <option value="">Pilih paket...</option>
+              <option>Free Trial (14 Hari)</option>
+              <option>Professional Plan</option>
+              <option>Enterprise Plan</option>
+              <option>Konsultasi Teknis</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Pesan</label>
+            <textarea id="message" placeholder="Ceritakan kebutuhan call center Anda..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">🚀 Kirim Request Demo</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo" style="margin-bottom:4px">
+          <div class="logo-icon">S</div>
+          <span>SBC<span style="color:var(--primary)">Gateway</span></span>
+        </a>
+        <p>Platform Session Border Controller enterprise-grade untuk optimalisasi call center modern. Dibangun dengan teknologi open-source terdepan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#analytics">Analytics</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <a href="#">Documentation</a>
+        <a href="#">API Reference</a>
+        <a href="#">System Status</a>
+        <a href="#">Release Notes</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="#contact">Contact</a>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SBC Gateway by SIPSES. All rights reserved.</span>
+      <span>Built with ❤️ in Indonesia</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Tab Switching
+function switchTab(tabId){
+  document.querySelectorAll('.showcase-tab').forEach(btn=>{
+    btn.classList.toggle('active',btn.getAttribute('onclick').includes(tabId));
+  });
+  document.querySelectorAll('.showcase-panel').forEach(panel=>{
+    panel.classList.toggle('active',panel.id===tabId);
+  });
+}
+
+// Navbar scroll effect
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+
+// Mobile hamburger
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{
+  const open=navLinks.style.display==='flex';
+  navLinks.style.display=open?'none':'flex';
+  navLinks.style.flexDirection='column';
+  navLinks.style.position='absolute';
+  navLinks.style.top='60px';
+  navLinks.style.right='24px';
+  navLinks.style.background='rgba(15,23,42,0.98)';
+  navLinks.style.padding='20px';
+  navLinks.style.borderRadius='12px';
+  navLinks.style.border='1px solid #1e293b';
+  navLinks.style.gap='16px';
+  if(open){navLinks.removeAttribute('style')}
+});
+
+// Scroll animations (IntersectionObserver)
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}});
+},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+    if(window.innerWidth<768){navLinks.removeAttribute('style')}
+  });
+});
+
+// Form submit
+document.getElementById('contactForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  alert('Terima kasih! Tim kami akan menghubungi Anda dalam 1x24 jam.');
+  e.target.reset();
+});
+</script>
+</body>
+</html>
