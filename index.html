@@ -4,8 +4,90 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>SBC Gateway — Enterprise Call Center Optimization Platform</title>
-<meta name="description" content="Infrastruktur VoIP cerdas dengan SBC Gateway. Dilengkapi AI Call Progress Detection untuk Autodialer dan WhatsApp SIP Calling gratis untuk Call Center & Layanan Pengaduan.">
-<meta name="keywords" content="SBC Gateway, SIP, Call Center, VoIP, Call Progress Detection, WhatsApp Business, Telecom">
+
+<!-- SEO Meta Tags -->
+<meta name="title" content="SBC Gateway — Enterprise Call Center Optimization Platform">
+<meta name="description" content="SBC Gateway cerdas untuk optimalisasi Call Center & Autodialer. Dilengkapi AI Call Progress Detection (CPD) akurat dan WhatsApp (WA) SIP Calling gratis tanpa biaya pulsa.">
+<meta name="keywords" content="SBC Gateway, Call Progress Detection, CPD, WhatsApp SIP Calling, WA SIP Calling, VoIP Gateway, Autodialer, VoIP Call Center, ASR Early Media, SIP Trunk, SIPSES, sbc.sipses.com, Deteksi Voicemail, Telepon WhatsApp Call Center, Free Inbound WA Calling, Call Center Indonesia">
+<meta name="robots" content="index, follow">
+<meta name="language" content="Indonesian">
+<meta name="author" content="SIPSES">
+<link rel="canonical" href="https://sbc.sipses.com/">
+
+<!-- Google Search Console Verification -->
+<!-- Gantilah konten di bawah ini dengan kode verifikasi dari Google Search Console Anda -->
+<meta name="google-site-verification" content="yOur_vEriFiCaTiOn_cOdE_hErE" />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sbc.sipses.com/">
+<meta property="og:title" content="SBC Gateway — Enterprise Call Center Optimization Platform">
+<meta property="og:description" content="Optimalkan autodialer Anda dengan AI Call Progress Detection (CPD) cerdas dan buka interkoneksi langsung ke WhatsApp (WA) SIP Calling gratis dua arah.">
+<meta property="og:image" content="https://sbc.sipses.com/img/dashboard-hero.png">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://sbc.sipses.com/">
+<meta property="twitter:title" content="SBC Gateway — Enterprise Call Center Optimization Platform">
+<meta property="twitter:description" content="Optimalkan autodialer Anda dengan AI Call Progress Detection (CPD) cerdas dan buka interkoneksi langsung ke WhatsApp (WA) SIP Calling gratis dua arah.">
+<meta property="twitter:image" content="https://sbc.sipses.com/img/dashboard-hero.png">
+
+<!-- Google Analytics / Google Tag (gtag.js) -->
+<!-- Gantilah G-XXXXXXXXXX dengan ID Tracking Google Analytics Anda -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX', {
+    'page_title': 'SBC Gateway Landing Page',
+    'page_path': window.location.pathname
+  });
+</script>
+
+<!-- Structured Data (JSON-LD) for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "SBC Gateway",
+  "operatingSystem": "Linux, Docker",
+  "applicationCategory": "BusinessApplication, CommunicationApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "IDR",
+    "description": "Hubungi sales kami untuk trial gratis 14 hari."
+  },
+  "description": "Infrastruktur VoIP cerdas dengan SBC Gateway. Dilengkapi AI Call Progress Detection (CPD) untuk Autodialer dan WhatsApp (WA) SIP Calling gratis untuk Call Center & Layanan Pengaduan.",
+  "keywords": "SBC Gateway, Call Progress Detection, CPD, WhatsApp SIP Calling, WA SIP Calling, VoIP, Session Border Controller, Autodialer, SIPSES, sbc.sipses.com",
+  "screenshot": "https://sbc.sipses.com/img/dashboard-hero.png",
+  "featureList": [
+    "AI Call Progress Detection (CPD) untuk deteksi voicemail & nada sibuk secara real-time",
+    "WhatsApp SIP Calling dua arah (Inbound & Outbound)",
+    "SIP Flow Analysis (TLS/UDP) & Visual SIP Ladder Flow",
+    "Early Tone Classification & Deteksi Silence",
+    "Central Management berbasis UI Dashboard"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "SIPSES",
+  "url": "https://sbc.sipses.com/",
+  "logo": "https://sbc.sipses.com/img/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+62-812-8726-4002",
+    "contactType": "customer service",
+    "email": "masteringvoip@gmail.com",
+    "availableLanguage": ["Indonesian", "English"]
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
@@ -25,6 +107,7 @@
       <a href="#features">Features</a>
       <a href="#cpd-flow">CPD Flow</a>
       <a href="#architecture">How It Works</a>
+      <a href="#whatsapp-calling">WA SIP Calling</a>
       <a href="#benefits">Benefits</a>
       <a href="#analytics">Analytics</a>
       <a href="#contact" class="nav-cta">Request Demo</a>
@@ -188,6 +271,52 @@
             <div><h4>CDR &amp; Analytics</h4><p>Setiap panggilan dicatat ke TimescaleDB dengan 40+ field data termasuk RTP quality, keyword detection, dan early audio classification.</p></div>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHATSAPP SIP CALLING ═══════════ -->
+<section id="whatsapp-calling" class="arch-section" style="border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="arch-layout">
+      <div>
+        <div class="section-badge">🟢 WhatsApp Voice Integration</div>
+        <h2 class="section-title">Bagaimana WhatsApp SIP Calling Bekerja?</h2>
+        <p class="section-desc">Hubungkan saluran komunikasi terpopuler dunia secara dua arah dengan infrastruktur Call Center IP-PBX Anda. Pelanggan dapat menelepon call center Anda secara gratis tanpa memotong pulsa sama sekali.</p>
+        <div class="arch-points">
+          <div class="arch-point">
+            <div class="icon">🟢</div>
+            <div>
+              <h4>Panggilan Inbound 100% Gratis bagi Pelanggan</h4>
+              <p>Pelanggan dapat memulai panggilan suara langsung dari profil WhatsApp Bisnis Anda. Panggilan disalurkan sepenuhnya melalui jaringan data internet (VoIP), menghilangkan hambatan biaya pulsa atau tarif telepon premium bagi pelanggan.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">🔄</div>
+            <div>
+              <h4>Integrasi Dua Arah yang Mulus (Inbound &amp; Outbound)</h4>
+              <p>Agen call center dapat menerima panggilan masuk dan melakukan panggilan keluar (outbound) langsung dari IP-PBX atau softphone ke nomor WhatsApp pelanggan secara instan dengan transisi media yang lancar.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">🛡️</div>
+            <div>
+              <h4>Keamanan &amp; Kendali Penuh via SBC Gateway</h4>
+              <p>Setiap panggilan diamankan dengan enkripsi TLS/SRTP, pembatasan laju panggilan (CPS/CCR limiting), serta codec transcoding otomatis untuk memastikan kualitas suara terbaik dan proteksi dari serangan siber.</p>
+            </div>
+          </div>
+          <div class="arch-point">
+            <div class="icon">📈</div>
+            <div>
+              <h4>Manfaat Nyata bagi Efisiensi Operasional</h4>
+              <p>Mengurangi biaya sewa trunk line telepon tradisional (PSTN), meningkatkan volume jangkauan (outreach), serta menaikkan tingkat jawaban (answer rate) karena panggilan outbound teridentifikasi sebagai kontak bisnis resmi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arch-image fade-up">
+        <img src="img/wa-flow.png" alt="WhatsApp SIP Calling Flow Diagram" width="600" height="600" loading="lazy">
       </div>
     </div>
   </div>
@@ -371,7 +500,7 @@
           </div>
           <div class="contact-item">
             <div class="icon">🌐</div>
-            <div class="info"><h4>Website</h4><p>sipses.com</p></div>
+            <div class="info"><h4>Website</h4><p><a href="https://sbc.sipses.com" target="_blank" style="color:inherit; text-decoration:underline;">sbc.sipses.com</a></p></div>
           </div>
         </div>
       </div>
