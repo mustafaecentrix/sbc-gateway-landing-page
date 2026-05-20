@@ -237,75 +237,109 @@
 
     <!-- Tab Buttons -->
     <div class="showcase-tabs">
-      <button class="showcase-tab active" onclick="switchTab('tab-monitoring')">📺 Live Monitoring</button>
-      <button class="showcase-tab" onclick="switchTab('tab-analytics')">📊 Analytics &amp; CDR</button>
-      <button class="showcase-tab" onclick="switchTab('tab-waba')">💬 WhatsApp &amp; Billing</button>
-      <button class="showcase-tab" onclick="switchTab('tab-security')">🛡️ Access Control &amp; Security</button>
+      <button class="showcase-tab active" onclick="switchTab('tab-livechannel')">📺 Live Channels</button>
+      <button class="showcase-tab" onclick="switchTab('tab-gateway')">🔌 Gateway Status</button>
+      <button class="showcase-tab" onclick="switchTab('tab-kpi')">📊 KPI Dashboard</button>
+      <button class="showcase-tab" onclick="switchTab('tab-sipresponse')">📉 SIP Response</button>
+      <button class="showcase-tab" onclick="switchTab('tab-cdr')">📝 CDR Tracking</button>
+      <button class="showcase-tab" onclick="switchTab('tab-sipflow')">🔀 SIP Flow</button>
     </div>
 
     <!-- Tab Panels -->
     <div class="showcase-panels">
 
-      <!-- Panel 1: Monitoring -->
-      <div id="tab-monitoring" class="showcase-panel active">
+      <!-- Panel 1: Live Channels -->
+      <div id="tab-livechannel" class="showcase-panel active">
         <div class="showcase-image">
-          <img src="img/live-monitoring.png" alt="Live Monitoring & Gateway Status" width="600" height="600" loading="lazy">
+          <img src="img/lp-livechannel.png" alt="Live Channels View" width="600" height="600" loading="lazy">
         </div>
         <div class="showcase-info">
-          <h3>Live Channels, Gateway Status &amp; Server Load</h3>
-          <p>Pantau kesehatan infrastruktur telekomunikasi secara langsung dari satu panel terpadu.</p>
+          <h3>Live Channels Monitoring</h3>
+          <p>Pemantauan aktivitas panggilan yang sedang berjalan secara real-time melalui teknologi WebSocket berkecepatan tinggi.</p>
           <div class="showcase-features">
-            <div class="showcase-feature"><div class="bullet">✓</div><span>LiveChannelView: Monitoring active call channel real-time via WebSocket.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>GatewayStatusView: Pantau RTT/latensi dan status online gateway carrier telco.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>ServerLoadView: Monitoring kapasitas CPU, memori, SSD, dan container health.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Visualisasi panggilan aktif (Active Channels) secara instan.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Informasi durasi panggilan, nomor pemanggil, dan gateway rute carrier.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Intervensi kendali untuk memutus panggilan aktif langsung dari UI.</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Panel 2: Analytics -->
-      <div id="tab-analytics" class="showcase-panel">
+      <!-- Panel 2: Gateway Status -->
+      <div id="tab-gateway" class="showcase-panel">
         <div class="showcase-image">
-          <img src="img/analytics-cdr.png" alt="SIP Response Analytics & CDR Logs" width="600" height="600" loading="lazy">
+          <img src="img/lp-gateway-status.png" alt="Gateway Status View" width="600" height="600" loading="lazy">
         </div>
         <div class="showcase-info">
-          <h3>SIP Response Analytics, Traffic &amp; CDR Logs</h3>
-          <p>Dapatkan insight performa dan diagnosa kegagalan panggilan dengan visualisasi charts interaktif.</p>
+          <h3>Gateway Status &amp; Trunk Monitoring</h3>
+          <p>Ketahui status kesehatan dan konektivitas setiap jalur trunk telco yang terhubung ke SBC Anda secara real-time.</p>
           <div class="showcase-features">
-            <div class="showcase-feature"><div class="bullet">✓</div><span>SipResponseAnalyticsView: Breakdown kode respon SIP (200 OK, 486 Busy, dsb) per jam.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>TrafficOverviewView &amp; CallStatsView: Stacked area charts total volume panggilan masuk &amp; keluar.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>CdrView: Pencarian log CDR dengan detail SIP flow ladder, ASR%, ACD, PDD, dan early audio classification.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Informasi latensi (RTT) real-time ke masing-masing gateway.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Status hidup/mati (online/offline percentage) untuk deteksi kegagalan dini.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Kemudahan aktivasi dan deaktivasi rute gateway via UI tanpa CLI.</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Panel 3: WABA & Billing -->
-      <div id="tab-waba" class="showcase-panel">
+      <!-- Panel 3: KPI Dashboard -->
+      <div id="tab-kpi" class="showcase-panel">
         <div class="showcase-image">
-          <img src="img/waba-routing.png" alt="WhatsApp Business & Billing View" width="600" height="600" loading="lazy">
+          <img src="img/lp-kpi-dashboard.png" alt="KPI Dashboard View" width="600" height="600" loading="lazy">
         </div>
         <div class="showcase-info">
-          <h3>WhatsApp SIP Calling, Dynamic CallerID &amp; Billing</h3>
-          <p>Kelola kanal panggilan alternatif WhatsApp Business API, aturan CallerID block, serta reporting biaya panggilan.</p>
+          <h3>KPI Dashboard &amp; Call Statistics</h3>
+          <p>Ringkasan performa telekomunikasi call center Anda yang divisualisasikan dalam bentuk grafik dan metrik operasional utama.</p>
           <div class="showcase-features">
-            <div class="showcase-feature"><div class="bullet">✓</div><span>WabaView: Setup interkoneksi WhatsApp Business API trunk ke SIP server.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>Dynamic CallerID: Kelola CallerID blocks (Sequence, Random, Static) via UI.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>BillingView: Ekspor laporan konsumsi menit dan biaya panggilan ke CSV, Excel, PDF.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Metrik performa penting seperti ASR (Answer Seizure Ratio), ACD (Average Call Duration), dan PDD (Post Dial Delay).</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Grafik tren volume panggilan masuk &amp; keluar secara real-time.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Perbandingan performa antar rute gateway secara visual.</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Panel 4: Security -->
-      <div id="tab-security" class="showcase-panel">
+      <!-- Panel 4: SIP Response -->
+      <div id="tab-sipresponse" class="showcase-panel">
         <div class="showcase-image">
-          <img src="img/acl-security.png" alt="Access Control List & Security View" width="600" height="600" loading="lazy">
+          <img src="img/lp-sip-response.png" alt="SIP Response Analytics View" width="600" height="600" loading="lazy">
         </div>
         <div class="showcase-info">
-          <h3>SIP Security &amp; Access Control List (ACL)</h3>
-          <p>Lindungi gateway dari ancaman spoofing, brute force, flooding, dan unauthorized access.</p>
+          <h3>SIP Response Analytics</h3>
+          <p>Laporan komprehensif mengenai sebaran kode respon SIP untuk menganalisis keberhasilan dan kegagalan panggilan dengan presisi.</p>
           <div class="showcase-features">
-            <div class="showcase-feature"><div class="bullet">✓</div><span>AclView: Tambah &amp; hapus rules IP whitelist/blacklist sip profile secara dinamis.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>Rate Limiting: Pengaturan batas Call Per Second (CPS) &amp; Concurrent Call Rate (CCR) per IP.</span></div>
-            <div class="showcase-feature"><div class="bullet">✓</div><span>SIP Firewall Rules: Deteksi dan blokir malformed SIP packets, anti-flooding, dan drop invalid User-Agents.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Breakdown kode respon SIP (200 OK, 486 Busy, 503 Service Unavailable, dll) per jam.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Kemudahan identifikasi masalah jaringan carrier telco eksternal.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Drilldown langsung ke detail CDR untuk analisis lebih mendalam.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 5: CDR Tracking -->
+      <div id="tab-cdr" class="showcase-panel">
+        <div class="showcase-image">
+          <img src="img/lp-cdr-tracking.png" alt="CDR Tracking View" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>Call Detail Records (CDR) Tracking</h3>
+          <p>Pencatatan dan pencarian seluruh riwayat panggilan VoIP secara mendalam dengan berbagai filter pencarian lanjutan.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Log detail panggilan lengkap termasuk caller ID, durasi, status SIP, dan gateway rute.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Penandaan jenis early audio (tone_announcement, announcement_only, tone_only, silence).</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Pencarian cepat berdasarkan nomor telepon, rentang tanggal, status panggilan, dan rute.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 6: SIP Flow -->
+      <div id="tab-sipflow" class="showcase-panel">
+        <div class="showcase-image">
+          <img src="img/lp-sip-flow.png" alt="SIP Flow Troubleshooting" width="600" height="600" loading="lazy">
+        </div>
+        <div class="showcase-info">
+          <h3>SIP Flow Analyzer &amp; Troubleshooting</h3>
+          <p>Kemudahan pemecahan masalah panggilan secara visual tanpa perlu mengekstrak manual log server mentah yang rumit.</p>
+          <div class="showcase-features">
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Pemetaan diagram alir SIP (SIP ladder flow diagram) untuk setiap sesi panggilan.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Melacak aliran paket INVITE, TRYING, RINGING, OK, BYE secara visual.</span></div>
+            <div class="showcase-feature"><div class="bullet">✓</div><span>Fitur unduh berkas PCAP secara instan dari UI untuk dianalisis lebih lanjut di Wireshark.</span></div>
           </div>
         </div>
       </div>
