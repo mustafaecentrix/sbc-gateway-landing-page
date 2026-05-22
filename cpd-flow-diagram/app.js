@@ -1337,13 +1337,21 @@ function selectScenario(num) {
     document.getElementById('btn-play').style.display = 'flex';
     document.getElementById('btn-pause').style.display = 'none';
 
-    // Reset zoom and swipe hint state
+    // Reset zoom and swipe hint state based on screen size
     const container = document.getElementById('diagram-container');
     if (container) {
-        container.classList.remove('fit-mode');
-        const zoomText = document.querySelector('#btn-zoom-toggle .zoom-text');
-        if (zoomText) zoomText.textContent = "Fit Screen";
-        rebindSwipeHint();
+        if (window.innerWidth < 768) {
+            container.classList.add('fit-mode');
+            const zoomText = document.querySelector('#btn-zoom-toggle .zoom-text');
+            if (zoomText) zoomText.textContent = "Zoom In";
+            const hint = document.getElementById('swipe-hint');
+            if (hint) hint.style.display = 'none';
+        } else {
+            container.classList.remove('fit-mode');
+            const zoomText = document.querySelector('#btn-zoom-toggle .zoom-text');
+            if (zoomText) zoomText.textContent = "Fit Screen";
+            rebindSwipeHint();
+        }
     }
 
     setTimeout(() => flowSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
@@ -1600,4 +1608,14 @@ function initParticles() {
 document.addEventListener('DOMContentLoaded', () => { 
     initParticles(); 
     rebindSwipeHint();
+    
+    // Auto-fit on mobile on load
+    const container = document.getElementById('diagram-container');
+    if (container && window.innerWidth < 768) {
+        container.classList.add('fit-mode');
+        const zoomText = document.querySelector('#btn-zoom-toggle .zoom-text');
+        if (zoomText) zoomText.textContent = "Zoom In";
+        const hint = document.getElementById('swipe-hint');
+        if (hint) hint.style.display = 'none';
+    }
 });
