@@ -1075,6 +1075,22 @@ document.getElementById('contactForm').addEventListener('submit',e=>{
   alert('Terima kasih! Tim kami akan menghubungi Anda dalam 1x24 jam.');
   e.target.reset();
 });
+
+// Auto-scroll on load if hash is present or if URL contains '?sim'
+window.addEventListener('load', () => {
+  let target = null;
+  if (window.location.hash) {
+    target = document.querySelector(window.location.hash);
+  } else if (window.location.search.includes('sim')) {
+    target = document.getElementById('interactive-simulator');
+  }
+  
+  if (target) {
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 600);
+  }
+});
 </script>
 
 <!-- Floating WhatsApp Button -->
