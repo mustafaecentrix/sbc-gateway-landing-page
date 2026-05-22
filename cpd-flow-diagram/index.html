@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPD Flow Diagram - Call Progress Detection/Analysis | VOXAGRID</title>
+    <meta name="description" content="Interactive Call Progress Detection/Analysis Flow Diagram - VOXAGRID SBC Gateway with ASR AI Early Audio Detection">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=1.1">
+</head>
+<body>
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header -->
+    <header id="main-header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="2.5" fill="none"/>
+                        <path d="M10 16L14 20L22 12" stroke="url(#logoGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ef4444"/></linearGradient></defs>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <h1>VOXAGRID</h1>
+                    <span class="logo-subtitle">Call Progress Detection / Analysis</span>
+                </div>
+            </div>
+            <div class="header-badge">
+                <span class="badge-dot"></span>
+                <span>Interactive Flow Diagram</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main -->
+    <main id="main-content">
+        <!-- Introduction -->
+        <section id="intro-section" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">📡</span> CPD Flow Overview</h2>
+                <p class="section-desc">Diagram interaktif yang menjelaskan alur <strong>Call Progress Detection/Analysis</strong> menggunakan <strong>SBC Gateway VOXAGRID</strong> dengan <strong>ASR AI</strong> untuk mendeteksi Early Audio.</p>
+            </div>
+            <div class="info-card" id="asr-info-card">
+                <div class="info-card-header">
+                    <div class="info-icon">🤖</div>
+                    <h3>ASR AI - Detect Early Audio</h3>
+                </div>
+                <div class="info-card-body">
+                    <p>ASR AI akan mendeteksi voice notification dari Telco Operator seperti:</p>
+                    <div class="keyword-tags">
+                        <span class="keyword-tag">"Nomor yang anda tuju..."</span>
+                        <span class="keyword-tag">"sedang sibuk"</span>
+                        <span class="keyword-tag">"dialihkan"</span>
+                        <span class="keyword-tag">"kotak suara"</span>
+                        <span class="keyword-tag">"tidak aktif"</span>
+                        <span class="keyword-tag">"tidak dapat dihubungi"</span>
+                    </div>
+                    <div class="info-note">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 110 14A7 7 0 018 1zm0 3a.75.75 0 00-.75.75v4.5a.75.75 0 001.5 0v-4.5A.75.75 0 008 4zm0 8a1 1 0 100-2 1 1 0 000 2z"/></svg>
+                        <span>Jika salah satu frasa match dengan voice notification, call otomatis di-hangup</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scenario Selector -->
+        <section id="scenario-selector" class="section">
+            <div class="section-header">
+                <h2 class="section-title"><span class="title-icon">🎬</span> Pilih Skenario</h2>
+                <p class="section-desc">Klik salah satu kondisi untuk melihat animasi flow diagram step-by-step</p>
+            </div>
+
+            <!-- CPD Mode Toggle Selection -->
+            <div class="cpd-toggle-box">
+                <div class="cpd-toggle-info">
+                    <span class="cpd-toggle-icon">🤖</span>
+                    <div class="cpd-toggle-text">
+                        <h3>Metode Deteksi Call Progress (CPD)</h3>
+                        <p>Bandingkan kecepatan sistem <strong>Menggunakan CPD (ASR AI)</strong> vs <strong>Tanpa CPD (Normal / Timeout)</strong>.</p>
+                    </div>
+                </div>
+                <div class="cpd-toggle-buttons">
+                    <button id="btn-cpd-on" class="cpd-toggle-btn active" onclick="setCPDMode(true)">
+                        <span class="cpd-status-dot cpd-status-on"></span>
+                        Menggunakan CPD (ASR AI)
+                    </button>
+                    <button id="btn-cpd-off" class="cpd-toggle-btn" onclick="setCPDMode(false)">
+                        <span class="cpd-status-dot cpd-status-off"></span>
+                        Tanpa CPD (Normal / Timeout)
+                    </button>
+                </div>
+            </div>
+
+            <div class="scenario-cards">
+                <button class="scenario-card" id="btn-scenario-1" onclick="selectScenario(1)">
+                    <div class="scenario-number">01</div>
+                    <div class="scenario-icon scenario-icon-success">✅</div>
+                    <h3>Call Answered</h3>
+                    <p>Customer mengangkat telepon dan terhubung ke Agent</p>
+                    <div class="scenario-status success"><span class="status-dot"></span>Connected</div>
+                </button>
+                <button class="scenario-card" id="btn-scenario-2" onclick="selectScenario(2)">
+                    <div class="scenario-number">02</div>
+                    <div class="scenario-icon scenario-icon-reject">❌</div>
+                    <h3>Call Rejected</h3>
+                    <p>Customer menolak panggilan, ASR AI mendeteksi voice notification</p>
+                    <div class="scenario-status reject"><span class="status-dot"></span>Rejected</div>
+                </button>
+                <button class="scenario-card" id="btn-scenario-3" onclick="selectScenario(3)">
+                    <div class="scenario-number">03</div>
+                    <div class="scenario-icon scenario-icon-inactive">📵</div>
+                    <h3>Nomor Tidak Aktif</h3>
+                    <p>Nomor tidak aktif / True Caller / Flight Mode</p>
+                    <div class="scenario-status inactive"><span class="status-dot"></span>Unreachable</div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Flow Diagram -->
+        <section id="flow-section" class="section" style="display:none;">
+            <div class="flow-header">
+                <div class="flow-title-row">
+                    <h2 class="section-title" id="flow-title"><span class="title-icon">📊</span><span id="flow-title-text">Kondisi 1</span></h2>
+                    <div class="flow-controls">
+                        <div class="speed-control">
+                            <label>Speed:</label>
+                            <button class="speed-btn active" data-speed="1" onclick="setSpeed(1, this)">1×</button>
+                            <button class="speed-btn" data-speed="1.5" onclick="setSpeed(1.5, this)">1.5×</button>
+                            <button class="speed-btn" data-speed="2" onclick="setSpeed(2, this)">2×</button>
+                        </div>
+                        <button class="control-btn" id="btn-play" onclick="playAnimation()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                            <span>Play</span>
+                        </button>
+                        <button class="control-btn" id="btn-pause" onclick="pauseAnimation()" style="display:none;">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            <span>Pause</span>
+                        </button>
+                        <button class="control-btn" id="btn-reset" onclick="resetAnimation()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                            <span>Reset</span>
+                        </button>
+                        <button class="control-btn btn-back" onclick="goBack()">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                            <span>Kembali</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                    <div class="progress-text" id="progress-text">Step 0 / 0</div>
+                </div>
+            </div>
+
+            <div class="flow-grid-layout">
+                <!-- SVG Diagram -->
+                <div class="diagram-container" id="diagram-container">
+                <button class="zoom-toggle-btn" id="btn-zoom-toggle" onclick="toggleZoomMode()" title="Toggle Fit/Zoom Mode">
+                    <span>🔍</span> <span class="zoom-text">Fit Screen</span>
+                </button>
+                <div class="swipe-hint" id="swipe-hint">↔ Geser diagram untuk detail</div>
+                <svg id="flow-svg" viewBox="0 0 1220 660" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="grad-autodialer" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#3b82f6"/><stop offset="100%" style="stop-color:#1d4ed8"/></linearGradient>
+                        <linearGradient id="grad-sbc" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#f59e0b"/><stop offset="100%" style="stop-color:#d97706"/></linearGradient>
+                        <linearGradient id="grad-telco" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#8b5cf6"/><stop offset="100%" style="stop-color:#6d28d9"/></linearGradient>
+                        <linearGradient id="grad-customer" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#10b981"/><stop offset="100%" style="stop-color:#059669"/></linearGradient>
+                        <linearGradient id="grad-asr" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#ef4444"/><stop offset="100%" style="stop-color:#dc2626"/></linearGradient>
+                        <linearGradient id="grad-agent" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#06b6d4"/><stop offset="100%" style="stop-color:#0891b2"/></linearGradient>
+                        <linearGradient id="grad-db" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#64748b"/><stop offset="100%" style="stop-color:#475569"/></linearGradient>
+                        <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.3"/></filter>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#475569"/></marker>
+                        <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#f59e0b"/></marker>
+                        <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#10b981"/></marker>
+                        <marker id="arrow-red" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#ef4444"/></marker>
+                    </defs>
+
+                    <!-- ===== Connection Lines ===== -->
+                    <g id="connections">
+                        <line id="conn-db-ad" x1="120" y1="95" x2="120" y2="175" class="conn-line" marker-end="url(#arrowhead)"/>
+                        <line id="conn-ad-sbc" x1="215" y1="225" x2="388" y2="225" class="conn-line" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-ad-sbc" x="300" y="215" class="conn-label" text-anchor="middle">SIP INVITE</text>
+                        <line id="conn-sbc-telco" x1="572" y1="225" x2="718" y2="225" class="conn-line" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-sbc-telco" x="645" y="215" class="conn-label" text-anchor="middle">SIP</text>
+                        <line id="conn-telco-cust" x1="882" y1="225" x2="968" y2="225" class="conn-line" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+                        <line id="conn-sbc-asr" x1="480" y1="290" x2="480" y2="380" class="conn-line" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-sbc-asr" x="495" y="340" class="conn-label" text-anchor="start">Audio Stream</text>
+                        <line id="conn-ad-agent" x1="120" y1="290" x2="120" y2="395" class="conn-line" marker-end="url(#arrowhead)"/>
+                        <line id="conn-ad-telco" x1="215" y1="225" x2="718" y2="225" class="conn-line conn-hidden" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-ad-telco" x="466" y="215" class="conn-label conn-hidden" text-anchor="middle">SIP INVITE</text>
+
+                        <!-- Hidden connections -->
+                        <path id="conn-asr-ad" d="M 415 440 L 215 440 L 215 290" class="conn-line conn-hidden" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-asr-ad" x="315" y="432" class="conn-label conn-hidden" text-anchor="middle">REQUEST TERMINATE</text>
+                        <path id="conn-cust-agent" d="M 1040 310 L 1040 550 L 200 550 L 200 490" class="conn-line conn-hidden" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-cust-agent" x="600" y="542" class="conn-label conn-hidden" text-anchor="middle">📞 Voice Connected</text>
+                        <path id="conn-telco-voice" d="M 760 290 L 760 350 L 572 350" class="conn-line conn-hidden" marker-end="url(#arrowhead)"/>
+                        <text id="lbl-telco-voice" x="666" y="343" class="conn-label conn-hidden" text-anchor="middle" style="font-size:9px;">Voice Notification 🔊</text>
+                    </g>
+
+                    <!-- ===== Flowing Data Packets (created by JS) ===== -->
+                    <g id="flow-packets"></g>
+
+                    <!-- ===== Step Number Markers on Arrows (created by JS) ===== -->
+                    <g id="step-markers"></g>
+
+                    <!-- ===== Nodes ===== -->
+                    <!-- DB -->
+                    <g id="node-db" class="node" transform="translate(70,30)">
+                        <ellipse cx="50" cy="15" rx="45" ry="12" fill="url(#grad-db)" opacity="0.9"/>
+                        <rect x="5" y="15" width="90" height="35" fill="url(#grad-db)" opacity="0.85"/>
+                        <ellipse cx="50" cy="50" rx="45" ry="12" fill="url(#grad-db)"/>
+                        <ellipse cx="50" cy="15" rx="45" ry="12" fill="#94a3b8" opacity="0.3"/>
+                        <text x="50" y="30" text-anchor="middle" fill="white" font-size="10" font-weight="600">DB Customer</text>
+                        <text x="50" y="43" text-anchor="middle" fill="white" font-size="10" font-weight="600">Phone</text>
+                    </g>
+
+                    <!-- Engine AUTODIALER -->
+                    <g id="node-autodialer" class="node" transform="translate(30,175)">
+                        <rect width="185" height="115" rx="12" fill="#0f172a" stroke="url(#grad-autodialer)" stroke-width="2" filter="url(#shadow)"/>
+                        <rect width="185" height="30" rx="12" fill="url(#grad-autodialer)" opacity="0.15"/>
+                        <rect y="12" width="185" height="18" fill="url(#grad-autodialer)" opacity="0.15"/>
+                        <text x="92" y="20" text-anchor="middle" fill="#60a5fa" font-size="11" font-weight="700">ENGINE AUTODIALER</text>
+                        <text x="92" y="50" text-anchor="middle" fill="#94a3b8" font-size="9">Dial: 081287264002</text>
+                        <rect x="15" y="62" width="155" height="22" rx="4" fill="#1e293b"/>
+                        <text x="92" y="77" text-anchor="middle" fill="#64748b" font-size="8" font-family="JetBrains Mono">SIP INVITE →</text>
+                        <!-- Status bar -->
+                        <rect id="ad-status-bar" x="15" y="90" width="155" height="16" rx="4" fill="#1e293b" opacity="0"/>
+                        <text id="ad-status-text" x="92" y="101" text-anchor="middle" fill="#60a5fa" font-size="7.5" font-weight="600" font-family="JetBrains Mono" opacity="0"></text>
+                    </g>
+
+                    <!-- SBC GATEWAY VOXAGRID -->
+                    <g id="node-sbc" class="node" transform="translate(390,170)">
+                        <rect width="180" height="120" rx="12" fill="#0f172a" stroke="url(#grad-sbc)" stroke-width="2.5" filter="url(#shadow)"/>
+                        <rect width="180" height="35" rx="12" fill="url(#grad-sbc)" opacity="0.2"/>
+                        <rect y="12" width="180" height="23" fill="url(#grad-sbc)" opacity="0.2"/>
+                        <text x="90" y="16" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="800">SBC GATEWAY</text>
+                        <text x="90" y="30" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="800">VOXAGRID</text>
+                        <line x1="15" y1="40" x2="165" y2="40" stroke="#f59e0b" stroke-opacity="0.3"/>
+                        <text x="90" y="57" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="600">Call Progress</text>
+                        <text x="90" y="70" text-anchor="middle" fill="#fcd34d" font-size="8.5" font-weight="600">Detection / Analisis</text>
+                        <!-- Audio waveform visualization -->
+                        <g id="sbc-waveform" transform="translate(20,80)" opacity="0">
+                            <rect width="140" height="30" rx="4" fill="#1e293b" stroke="#f59e0b" stroke-width="0.5" stroke-opacity="0.3"/>
+                            <g class="waveform-bars" transform="translate(10,5)">
+                                <rect x="0" y="8" width="3" height="14" rx="1" fill="#f59e0b" opacity="0.6"><animate attributeName="height" values="14;6;14" dur="0.4s" repeatCount="indefinite"/><animate attributeName="y" values="8;11;8" dur="0.4s" repeatCount="indefinite"/></rect>
+                                <rect x="6" y="4" width="3" height="22" rx="1" fill="#f59e0b" opacity="0.7"><animate attributeName="height" values="22;10;22" dur="0.5s" repeatCount="indefinite"/><animate attributeName="y" values="4;10;4" dur="0.5s" repeatCount="indefinite"/></rect>
+                                <rect x="12" y="6" width="3" height="18" rx="1" fill="#f59e0b" opacity="0.5"><animate attributeName="height" values="18;8;18" dur="0.35s" repeatCount="indefinite"/><animate attributeName="y" values="6;11;6" dur="0.35s" repeatCount="indefinite"/></rect>
+                                <rect x="18" y="2" width="3" height="26" rx="1" fill="#f59e0b" opacity="0.8"><animate attributeName="height" values="26;12;26" dur="0.45s" repeatCount="indefinite"/><animate attributeName="y" values="2;9;2" dur="0.45s" repeatCount="indefinite"/></rect>
+                                <rect x="24" y="7" width="3" height="16" rx="1" fill="#f59e0b" opacity="0.6"><animate attributeName="height" values="16;6;16" dur="0.38s" repeatCount="indefinite"/><animate attributeName="y" values="7;12;7" dur="0.38s" repeatCount="indefinite"/></rect>
+                                <rect x="30" y="3" width="3" height="24" rx="1" fill="#f59e0b" opacity="0.7"><animate attributeName="height" values="24;8;24" dur="0.42s" repeatCount="indefinite"/><animate attributeName="y" values="3;11;3" dur="0.42s" repeatCount="indefinite"/></rect>
+                                <rect x="36" y="5" width="3" height="20" rx="1" fill="#f59e0b" opacity="0.5"><animate attributeName="height" values="20;10;20" dur="0.5s" repeatCount="indefinite"/><animate attributeName="y" values="5;10;5" dur="0.5s" repeatCount="indefinite"/></rect>
+                                <rect x="42" y="8" width="3" height="14" rx="1" fill="#f59e0b" opacity="0.6"><animate attributeName="height" values="14;4;14" dur="0.33s" repeatCount="indefinite"/><animate attributeName="y" values="8;13;8" dur="0.33s" repeatCount="indefinite"/></rect>
+                                <rect x="48" y="4" width="3" height="22" rx="1" fill="#f59e0b" opacity="0.8"><animate attributeName="height" values="22;6;22" dur="0.48s" repeatCount="indefinite"/><animate attributeName="y" values="4;12;4" dur="0.48s" repeatCount="indefinite"/></rect>
+                                <rect x="54" y="6" width="3" height="18" rx="1" fill="#f59e0b" opacity="0.5"><animate attributeName="height" values="18;8;18" dur="0.4s" repeatCount="indefinite"/><animate attributeName="y" values="6;11;6" dur="0.4s" repeatCount="indefinite"/></rect>
+                            </g>
+                            <text x="80" y="22" text-anchor="start" fill="#f59e0b" font-size="7" font-family="JetBrains Mono" font-weight="600">ANALYZING</text>
+                        </g>
+                    </g>
+
+                    <!-- TELCO PROVIDER -->
+                    <g id="node-telco" class="node" transform="translate(720,175)">
+                        <rect width="160" height="115" rx="12" fill="#0f172a" stroke="url(#grad-telco)" stroke-width="2" filter="url(#shadow)"/>
+                        <rect width="160" height="30" rx="12" fill="url(#grad-telco)" opacity="0.15"/>
+                        <rect y="12" width="160" height="18" fill="url(#grad-telco)" opacity="0.15"/>
+                        <text x="80" y="20" text-anchor="middle" fill="#a78bfa" font-size="11" font-weight="700">TELCO PROVIDER</text>
+                        <text x="80" y="50" text-anchor="middle" fill="#94a3b8" font-size="9">Mobile Network</text>
+                        <!-- Signal tower icon -->
+                        <g transform="translate(55,58)">
+                            <line x1="25" y1="40" x2="25" y2="10" stroke="#8b5cf6" stroke-width="2"/>
+                            <circle cx="25" cy="8" r="3" fill="#8b5cf6"/>
+                            <!-- Signal arcs -->
+                            <path id="telco-signal-1" d="M 15 15 A 12 12 0 0 1 35 15" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0.3"/>
+                            <path id="telco-signal-2" d="M 10 20 A 18 18 0 0 1 40 20" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0.2"/>
+                        </g>
+                    </g>
+
+                    <!-- CUSTOMER (Enhanced Phone) -->
+                    <g id="node-customer" class="node" transform="translate(970,155)">
+                        <rect width="160" height="155" rx="12" fill="#0f172a" stroke="url(#grad-customer)" stroke-width="2" filter="url(#shadow)"/>
+                        <!-- Person icon -->
+                        <g transform="translate(24,10)">
+                            <circle cx="20" cy="14" r="10" fill="none" stroke="#64748b" stroke-width="1.5"/>
+                            <text x="20" y="18" text-anchor="middle" font-size="12">👤</text>
+                        </g>
+                        <!-- Large phone -->
+                        <g id="customer-phone" transform="translate(65,8)">
+                            <rect x="0" y="0" width="44" height="72" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+                            <rect x="4" y="10" width="36" height="44" rx="3" fill="#0f172a" id="phone-screen"/>
+                            <circle cx="22" cy="62" r="4" fill="#10b981" opacity="0.4"/>
+                            <!-- Screen content - changes per state -->
+                            <g id="phone-screen-content">
+                                <text id="phone-screen-icon" x="22" y="38" text-anchor="middle" font-size="18" fill="#64748b">📱</text>
+                            </g>
+                        </g>
+                        <text x="80" y="96" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">CUSTOMER</text>
+                        <text x="80" y="112" text-anchor="middle" fill="#94a3b8" font-size="9">(081287264002)</text>
+                        <!-- Customer status -->
+                        <g id="cust-status-badge" opacity="0">
+                            <rect x="15" y="120" width="130" height="24" rx="12" id="cust-status-bg" fill="#10b981"/>
+                            <text x="80" y="136" text-anchor="middle" fill="white" font-size="9" font-weight="700" id="cust-status-text">IDLE</text>
+                        </g>
+                    </g>
+
+                    <!-- Ringing Waves (around customer phone) -->
+                    <g id="ring-waves" style="display:none">
+                        <circle cx="1057" cy="200" r="30" fill="none" stroke="#f59e0b" stroke-width="2" class="ring-wave ring-wave-1"/>
+                        <circle cx="1057" cy="200" r="30" fill="none" stroke="#f59e0b" stroke-width="1.5" class="ring-wave ring-wave-2"/>
+                        <circle cx="1057" cy="200" r="30" fill="none" stroke="#f59e0b" stroke-width="1" class="ring-wave ring-wave-3"/>
+                        <!-- Bell icon bouncing -->
+                        <text id="ring-bell" x="1120" y="175" font-size="22" class="ring-bell-anim">🔔</text>
+                    </g>
+
+                    <!-- Answer/Connected Waves -->
+                    <g id="answer-waves" style="display:none">
+                        <circle cx="1057" cy="200" r="25" fill="none" stroke="#10b981" stroke-width="2" class="answer-wave answer-wave-1"/>
+                        <circle cx="1057" cy="200" r="25" fill="none" stroke="#10b981" stroke-width="1.5" class="answer-wave answer-wave-2"/>
+                    </g>
+
+                    <!-- Reject Effect -->
+                    <g id="reject-effect" style="display:none">
+                        <!-- Red X over phone -->
+                        <line x1="1030" y1="175" x2="1085" y2="230" stroke="#ef4444" stroke-width="4" stroke-linecap="round" class="reject-x"/>
+                        <line x1="1085" y1="175" x2="1030" y2="230" stroke="#ef4444" stroke-width="4" stroke-linecap="round" class="reject-x"/>
+                    </g>
+
+                    <!-- Inactive Effect -->
+                    <g id="inactive-effect" style="display:none">
+                        <circle cx="1057" cy="200" r="40" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="6,4" class="inactive-ring"/>
+                        <line x1="1030" y1="228" x2="1085" y2="172" stroke="#6b7280" stroke-width="3" stroke-linecap="round" class="inactive-slash"/>
+                    </g>
+
+                    <!-- ASR AI (Enhanced) -->
+                    <g id="node-asr" class="node" transform="translate(400,385)">
+                        <!-- Outer detection ring -->
+                        <circle id="asr-outer-ring" cx="80" cy="50" r="62" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,4" opacity="0.2">
+                            <animateTransform attributeName="transform" type="rotate" from="0 80 50" to="360 80 50" dur="12s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="80" cy="50" r="55" fill="#0f172a" stroke="url(#grad-asr)" stroke-width="2.5" filter="url(#shadow)"/>
+                        <!-- Inner rotating ring -->
+                        <circle id="asr-inner-ring" cx="80" cy="50" r="42" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,4" opacity="0.3">
+                            <animateTransform attributeName="transform" type="rotate" from="0 80 50" to="-360 80 50" dur="8s" repeatCount="indefinite"/>
+                        </circle>
+                        <text x="80" y="38" text-anchor="middle" fill="#f87171" font-size="11" font-weight="800">ASR AI</text>
+                        <text x="80" y="53" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="500">(Detect Early</text>
+                        <text x="80" y="65" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="500">Audio)</text>
+                        <!-- Microphone icon -->
+                        <text x="80" y="84" text-anchor="middle" font-size="14" opacity="0.5">🎤</text>
+                    </g>
+
+                    <!-- ASR Blinking Overlay -->
+                    <g id="asr-blink-overlay" style="display:none">
+                        <circle cx="480" cy="435" r="58" fill="#ef4444" opacity="0.15" class="asr-blink-ring"/>
+                        <circle cx="480" cy="435" r="65" fill="none" stroke="#ef4444" stroke-width="3" opacity="0.5" class="asr-blink-ring-outer"/>
+                    </g>
+
+                    <!-- ASR AI Stopped Indicator -->
+                    <g id="asr-stopped" style="display:none">
+                        <circle cx="480" cy="435" r="58" fill="#0f172a" opacity="0.7"/>
+                        <rect x="440" y="420" width="80" height="28" rx="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+                        <text x="480" y="439" text-anchor="middle" fill="#64748b" font-size="9" font-weight="700">⏹ STOPPED</text>
+                    </g>
+
+                    <!-- ASR Keyword Matches -->
+                    <g id="asr-keywords" style="display:none">
+                        <g id="kw-1" opacity="0" transform="translate(555, 380)">
+                            <rect x="0" y="0" width="80" height="22" rx="11" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+                            <text x="40" y="15" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="600">"nomor" ✓</text>
+                        </g>
+                        <g id="kw-2" opacity="0" transform="translate(555, 410)">
+                            <rect x="0" y="0" width="80" height="22" rx="11" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+                            <text x="40" y="15" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="600">"sibuk" ✓</text>
+                        </g>
+                        <g id="kw-3" opacity="0" transform="translate(555, 440)">
+                            <rect x="0" y="0" width="100" height="22" rx="11" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+                            <text x="50" y="15" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="600">"dialihkan" ✓</text>
+                        </g>
+                        <g id="kw-4" opacity="0" transform="translate(555, 470)">
+                            <rect x="0" y="0" width="100" height="22" rx="11" fill="#7f1d1d" stroke="#ef4444" stroke-width="1"/>
+                            <text x="50" y="15" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="600">"tidak aktif" ✓</text>
+                        </g>
+                    </g>
+
+                    <!-- Group of Agents -->
+                    <g id="node-agent" class="node" transform="translate(30,395)">
+                        <rect width="185" height="100" rx="12" fill="#0f172a" stroke="url(#grad-agent)" stroke-width="2" filter="url(#shadow)"/>
+                        <rect width="185" height="28" rx="12" fill="url(#grad-agent)" opacity="0.15"/>
+                        <rect y="12" width="185" height="16" fill="url(#grad-agent)" opacity="0.15"/>
+                        <text x="92" y="18" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="700">GROUP OF AGENTS</text>
+                        <g transform="translate(25,35)">
+                            <circle cx="15" cy="12" r="10" fill="#06b6d4" opacity="0.15"/>
+                            <text x="15" y="16" text-anchor="middle" font-size="12">👤</text>
+                            <circle cx="50" cy="12" r="10" fill="#06b6d4" opacity="0.15"/>
+                            <text x="50" y="16" text-anchor="middle" font-size="12">👤</text>
+                            <circle cx="85" cy="12" r="10" fill="#06b6d4" opacity="0.15"/>
+                            <text x="85" y="16" text-anchor="middle" font-size="12">👤</text>
+                            <circle cx="120" cy="12" r="10" fill="#06b6d4" opacity="0.15"/>
+                            <text x="120" y="16" text-anchor="middle" font-size="12">👤</text>
+                        </g>
+                        <text x="92" y="78" text-anchor="middle" fill="#94a3b8" font-size="8.5">Available Call Center Agents</text>
+                        <!-- Agent headset indicator -->
+                        <g id="agent-active-indicator" opacity="0">
+                            <rect x="15" y="82" width="155" height="14" rx="7" fill="#06b6d4" opacity="0.2"/>
+                            <text x="92" y="93" text-anchor="middle" fill="#22d3ee" font-size="7" font-weight="700" font-family="JetBrains Mono">🎧 AGENT CONNECTED</text>
+                        </g>
+                    </g>
+
+                    <!-- Speech Bubbles (for talking) -->
+                    <g id="speech-bubbles" style="display:none">
+                        <!-- Customer talking -->
+                        <g id="speech-customer" opacity="0" class="speech-bubble-anim-1">
+                            <rect x="1100" y="240" width="90" height="30" rx="10" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                            <polygon points="1100,255 1090,260 1100,265" fill="#1e293b" stroke="#10b981" stroke-width="1.5"/>
+                            <text x="1145" y="259" text-anchor="middle" fill="#34d399" font-size="9" font-weight="600">Halo... 🗣️</text>
+                        </g>
+                        <!-- Agent talking -->
+                        <g id="speech-agent" opacity="0" class="speech-bubble-anim-2">
+                            <rect x="0" y="500" width="120" height="30" rx="10" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+                            <polygon points="120,510 130,515 120,520" fill="#1e293b" stroke="#06b6d4" stroke-width="1.5"/>
+                            <text x="60" y="519" text-anchor="middle" fill="#22d3ee" font-size="9" font-weight="600">Selamat siang! 🎧</text>
+                        </g>
+                    </g>
+
+                    <!-- Voice Notification Display -->
+                    <g id="voice-notif-display" style="display:none">
+                        <!-- Notification bubble from Telco -->
+                        <g transform="translate(670,310)">
+                            <rect x="0" y="0" width="240" height="55" rx="10" fill="#1e293b" stroke="#8b5cf6" stroke-width="2"/>
+                            <!-- Speaker icon -->
+                            <text x="20" y="22" font-size="14">🔊</text>
+                            <text id="voice-text-1" x="40" y="22" fill="#c4b5fd" font-size="9" font-weight="500" opacity="0">"Nomor yang anda tuju</text>
+                            <text id="voice-text-2" x="40" y="37" fill="#c4b5fd" font-size="9" font-weight="500" opacity="0">sedang sibuk /</text>
+                            <text id="voice-text-3" x="40" y="50" fill="#c4b5fd" font-size="9" font-weight="500" opacity="0">dialihkan..."</text>
+                        </g>
+                        <!-- Sound wave arcs from telco to SBC -->
+                        <g id="sound-waves-to-sbc">
+                            <path d="M 660 340 Q 640 335 630 340" fill="none" stroke="#8b5cf6" stroke-width="1.5" opacity="0" class="sound-arc sound-arc-1"/>
+                            <path d="M 650 340 Q 625 332 610 340" fill="none" stroke="#8b5cf6" stroke-width="1.2" opacity="0" class="sound-arc sound-arc-2"/>
+                            <path d="M 640 340 Q 610 328 590 340" fill="none" stroke="#8b5cf6" stroke-width="1" opacity="0" class="sound-arc sound-arc-3"/>
+                        </g>
+                    </g>
+
+                    <!-- Terminate Signal -->
+                    <g id="terminate-signal" style="display:none">
+                        <g transform="translate(250, 415)">
+                            <rect x="0" y="0" width="170" height="35" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="2"/>
+                            <text x="85" y="14" text-anchor="middle" fill="#fca5a5" font-size="8" font-weight="600">⛔ CANCEL / REQUEST</text>
+                            <text x="85" y="28" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="800">TERMINATE</text>
+                        </g>
+                    </g>
+
+                    <!-- Status Overlays -->
+                    <g id="status-overlays" style="display:none">
+                        <!-- Hangup overlay -->
+                        <g id="overlay-hangup" style="display:none">
+                            <rect x="420" y="130" width="200" height="50" rx="25" fill="#dc2626" opacity="0.95" class="hangup-pulse"/>
+                            <text x="520" y="160" text-anchor="middle" fill="white" font-size="16" font-weight="900">📞 HANGUP</text>
+                        </g>
+                    </g>
+
+                    <!-- Duration Timer Display -->
+                    <g id="step-timer" transform="translate(1100,10)">
+                        <rect x="0" y="0" width="100" height="28" rx="14" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+                        <text id="timer-icon" x="18" y="19" text-anchor="middle" font-size="11">⏱️</text>
+                        <text id="timer-text" x="65" y="19" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600" font-family="JetBrains Mono">0.0s</text>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="flow-sidebar">
+                <!-- Step Description -->
+                <div class="step-description" id="step-description">
+                    <div class="step-badge" id="step-badge">Ready</div>
+                    <div class="step-text" id="step-text">Klik "Play" untuk memulai animasi</div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline-container" id="timeline-container"></div>
+            </div>
+        </div> <!-- End .flow-grid-layout -->
+    </section>
+    </main>
+
+    <footer id="main-footer">
+        <div class="footer-content">
+            <span>© 2026 VOXAGRID — Call Progress Detection/Analysis</span>
+            <span class="footer-dot">•</span>
+            <span>Interactive Flow Diagram</span>
+        </div>
+    </footer>
+
+    <script src="app.js?v=1.1"></script>
+</body>
+</html>
